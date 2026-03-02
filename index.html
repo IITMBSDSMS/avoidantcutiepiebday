@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>For Pallavi 🌸</title>
+<style>
+body {
+  margin: 0;
+  background: linear-gradient(to bottom, #ffe6f0, #fff0f5);
+  font-family: 'Georgia', serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.container {
+  text-align: center;
+  max-width: 700px;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 42px;
+  color: #c2185b;
+}
+
+#poem {
+  font-size: 22px;
+  margin-top: 20px;
+  line-height: 1.6;
+  color: #4a4a4a;
+}
+
+button {
+  margin-top: 30px;
+  padding: 12px 25px;
+  font-size: 18px;
+  background: #c2185b;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #880e4f;
+}
+
+.heart {
+  position: absolute;
+  color: pink;
+  font-size: 20px;
+  animation: float 6s linear infinite;
+}
+
+@keyframes float {
+  0% {transform: translateY(100vh);}
+  100% {transform: translateY(-10vh);}
+}
+</style>
+</head>
+<body>
+
+<audio id="bgMusic" loop preload="auto">
+  <source src="../song.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+  <h1>Happy Birthday, Pallavi 🌸</h1>
+  <div id="poem"></div>
+  <button onclick="finalMessage()">Click for a surprise 💌</button>
+</div>
+
+<script>
+const text = `Pallavi,
+
+Like verses hidden in silent skies,
+You arrived — a poem in disguise.
+Soft as dawn, yet fierce like art,
+You rewrote the language of my heart.
+
+Every smile — a rhythm sweet,
+Every word — makes mine complete.
+If love were written line by line,
+Every stanza would say: you're mine.
+
+And somewhere between every rhyme,
+Lives your Bhola Bandar 🦧 all the time.
+The luckiest monkey, proud to be,
+The one who belongs only to thee.
+
+Today the world celebrates you,
+But my world begins and ends with you.
+Happy Birthday, from your Bhola Bandar 🦧❤️`;
+
+let i = 0;
+function typeWriter() {
+  if (i < text.length) {
+    document.getElementById("poem").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typeWriter, 40);
+  }
+}
+
+typeWriter();
+
+// Play music on first user interaction (browser autoplay fix)
+document.body.addEventListener("click", function () {
+  const music = document.getElementById("bgMusic");
+  music.play();
+}, { once: true });
+
+function finalMessage() {
+  alert("Forever yours, Pallavi. Love, your Bhola Bandar 🦧❤️");
+}
+
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "🦧";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = Math.random() * 20 + 15 + "px";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 6000);
+}
+
+setInterval(createHeart, 500);
+</script>
+
+</body>
+</html>
